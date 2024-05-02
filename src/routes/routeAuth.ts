@@ -8,7 +8,7 @@ const authController = new AuthController
 routeAuth.set('view engine', 'ejs')
 routeAuth.set('views', './src/views')
 
-routeAuth.get("/login", redirectToDashboard, async (req, res, next) => {
+routeAuth.get("/login/index", redirectToDashboard, async (req, res, next) => {
     res.render("login");
 },);
 
