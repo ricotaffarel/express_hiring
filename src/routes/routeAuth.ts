@@ -2,13 +2,11 @@ import express from "express"
 import AuthController from '../controllers/authController';
 import { redirectToDashboard } from "../middleware/middlewares";
 
-const routeAuth = express()
+const routeAuth = express.Router()
 
 const authController = new AuthController
-routeAuth.set('view engine', 'ejs')
-routeAuth.set('views', './src/views')
 
-routeAuth.get("/login/index", redirectToDashboard, async (req, res, next) => {
+routeAuth.get("/login", redirectToDashboard, async (req, res, next) => {
     res.render("login");
 },);
 

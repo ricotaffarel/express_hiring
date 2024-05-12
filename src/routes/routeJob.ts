@@ -1,12 +1,9 @@
 import express from "express"
 import { checkAuth } from "../middleware/middlewares";
 
-const routeJob = express()
+const routeJob = express.Router()
 
-routeJob.set('view engine', 'ejs')
-routeJob.set('views', './src/views')
-
-routeJob.get("/job", checkAuth, async (req, res, next) => {
+routeJob.get("/admin/job", checkAuth, async (req, res, next) => {
     res.render("admin/job/index");
 });
 

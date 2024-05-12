@@ -1,8 +1,8 @@
 import dotenv from 'dotenv'
 import { routes } from "./routes/routes";
-// import express, { Request, Response, NextFunction } from 'express';
 import session from 'express-session'
 import express from 'express'
+import path from 'path';
 
 dotenv.config()
 
@@ -12,19 +12,12 @@ const PORT = process.env.PORT ?? 3000
 
 app.use(express.urlencoded({ extended: true }))
 app.use(express.json())
+app.set('view engine', 'ejs')
+
 app.use(express.static('public'))
 
-// app.use(cookieParser())
+app.set("views", path.join(__dirname, "views"));
 
-// app.use(session({
-//     secret: 'keyboard cat',
-//     resave: false,
-//     saveUninitialized: true,
-//     cookie: {
-//         secure: true,
-//         maxAge: 60000
-//     }
-// }));
 app.use(session({ secret: 'keyboard cat', }))
 
 app.use(routes)

@@ -4,9 +4,8 @@ import { checkAuth } from "../middleware/middlewares";
 import { routeJobCategory } from "./routeJobCategory";
 import { routeJob } from "./routeJob";
 
-const routes = express()
-routes.set('view engine', 'ejs')
-routes.set('views', './src/views')
+const routes = express.Router()
+
 routes.use(routeAuth)
 routes.use(routeJobCategory)
 routes.use(routeJob)
